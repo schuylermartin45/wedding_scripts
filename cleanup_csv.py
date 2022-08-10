@@ -62,8 +62,14 @@ def main():
             if "+1" in nameLst[1]:
                 name = nameLst[0]
             else:
-                firstFirstName = nameLst[0].split()[0]
-                name = f"{firstFirstName} & {nameLst[1]}"
+                firstLastName = nameLst[0].split()[-1]
+                secondLastName = nameLst[1].split()[-1]
+                # Shorten when the last names match
+                if firstLastName == secondLastName:
+                    firstFirstName = nameLst[0].split()[0]
+                    name = f"{firstFirstName} & {nameLst[1]}"
+                else:
+                    name = f"{nameLst[0]} & {nameLst[1]}"
         else:
             lastName = nameLst[0].split()[1]
             name = f"House of {lastName}"
